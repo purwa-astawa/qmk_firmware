@@ -1,6 +1,6 @@
 {
     "manufacturer": "Purwa Astawa",
-    "keyboard_name": "handwired/purwa1x1",
+    "keyboard_name": "purwa_dactyl",
     "maintainer": "Purwa Astawa",
     "bootloader": "caterina",
     "diode_direction": "COL2ROW",
@@ -12,22 +12,11 @@
         "mousekey": true,
         "nkro": true
     },
-    "matrix_pins": {
-        "cols": ["F5"],
-        "rows": ["D4"]
-    },
     "processor": "atmega32u4",
     "url": "",
     "usb": {
         "device_version": "1.0.0",
         "pid": "0x0000",
         "vid": "0xFEED"
-    },
-    "layouts": {
-        "LAYOUT": {
-            "layout": [
-                { "matrix": [0, 0], "x": 0, "y": 0 }
-            ]
-        }
     }
 }
