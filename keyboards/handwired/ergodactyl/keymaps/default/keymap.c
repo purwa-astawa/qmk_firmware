@@ -7,7 +7,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LALT  , KC_A   , KC_S   , KC_D   , KC_F  , KC_G  , KC_PIPE ,                   KC_BSLS  , KC_H     , KC_J     , KC_K    , KC_L           , KC_SCLN         , KC_QUOTE,
         KC_LCTL  , KC_Z   , KC_X   , KC_C   , KC_V  , KC_B  ,                                        KC_N     , KC_M     , KC_COMM , KC_DOT         , KC_SLSH         , KC_LCTL ,
         MO(1)    , KC_HOME, KC_WH_L, KC_WH_D,                                                                              KC_WH_U , KC_WH_R        , KC_END          , KC_DEL ,
-        LSFT_T(KC_DEL),ALT_T(KC_DOWN),KC_LSFT, KC_SPC ,  CTL_T(KC_LEFT), KC_LGUI,                       KC_GRV   , CTL_T(KC_UP)  ,  KC_ENT ,  KC_ESC, ALT_T(KC_RIGHT) ,KC_BSPC
+        LSFT_T(KC_DEL),ALT_T(KC_DOWN),KC_LSFT, KC_SPC ,  CTL_T(KC_LEFT), KC_LGUI,                       KC_GRV   , CTL_T(KC_RIGHT)  ,  KC_ENT ,  KC_ESC, ALT_T(KC_UP) ,KC_BSPC
     ),
     [1] = LAYOUT(
         KC_ESC   , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F12  ,                   KC_F11   , KC_F6    , KC_F7    , KC_F8   , KC_F9          , KC_F10          , KC_TRNS ,
@@ -15,6 +15,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LALT  , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, QK_BOOT ,                   KC_TRNS  , KC_LEFT  , KC_UP    , KC_DOWN , KC_RIGHT       , KC_TRNS         , KC_TRNS ,
         KC_LCTL  , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                        KC_TRNS  , KC_TRNS  , KC_TRNS , KC_TRNS        , KC_TRNS         , KC_TRNS ,
         KC_TRNS , KC_HOME, KC_WH_L, KC_WH_D,                                                                              KC_WH_U , KC_WH_R        , KC_END          , KC_DEL ,
-        LSFT_T(KC_DEL),ALT_T(KC_DOWN),KC_LSFT, KC_SPC ,  CTL_T(KC_LEFT), KC_LGUI,                       KC_GRV   , CTL_T(KC_UP)  ,  KC_ENT ,  KC_ESC, ALT_T(KC_RIGHT) ,KC_BSPC
+       LSFT_T(KC_DEL),ALT_T(KC_DOWN),KC_LSFT, KC_SPC ,  CTL_T(KC_LEFT), KC_LGUI,                       KC_GRV   , CTL_T(KC_RIGHT)  ,  KC_ENT ,  KC_ESC, ALT_T(KC_UP) ,KC_BSPC
     )
 };
