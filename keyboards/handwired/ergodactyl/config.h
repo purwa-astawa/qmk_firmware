@@ -36,3 +36,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define USE_SERIAL
 #define SOFT_SERIAL_PIN D0
 #define MASTER_LEFT
+#define DEBOUNCE 5
