@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "features/achordion.h"
 
 #define _BASE 0
 #define _NAV 1
@@ -43,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LALT  , HOME_A , HOME_S , HOME_D , HOME_F      , KC_G  ,                     KC_H     , HOME_J      , HOME_K  , HOME_L         , HOME_SCLN       , KC_QUOTE,
         KC_LSFT  , KC_Z   , KC_X   , KC_C   , KC_V        , KC_B  ,                     KC_N     , KC_M        , KC_COMM , KC_DOT         , KC_SLSH         , KC_BSLS ,
                                       LT(_CONFIG, KC_DEL),  KC_LGUI,                    KC_WH_D  , KC_WH_U,
-                  LT(_NAV, KC_GRV),    KC_SPC,  LT(_FUN, KC_TAB),                     LT(_SYM, KC_ESC), LSFT_T(KC_ENT), LT(_NUM, KC_BSPC)
+                  LT(_NAV, KC_GRV),    KC_SPC,  LT(_FUN, KC_TAB),                       LT(_SYM, KC_ESC), LSFT_T(KC_ENT), LT(_NUM, KC_BSPC)
     ),
     [_NAV] = LAYOUT(
         KC_TAB   ,     XXX,     XXX,     XXX,          XXX,     XXX,                    KC_HOME  , KC_PGUP     , KC_PGDN , KC_END         , XXX             , KC_EQL,
@@ -70,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV   , KC_EXLM , KC_AT  , KC_HASH, KC_DLR      , KC_CIRC,                   XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
         KC_TILD  , KC_AMPR , KC_LCBR, KC_RCBR, KC_LPRN     , KC_RPRN,                   XXX      , KC_LSFT     , KC_LCTL , KC_LALT        , KC_LGUI         ,  XXX,
         KC_EQL   , KC_PIPE , KC_LBRC, KC_RBRC, KC_LT       ,   KC_GT,                   XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
-                                                  KC_COMM   ,  KC_DOT,                   KC_TRNS  , KC_TRNS,
+                                                  KC_COMM   ,  KC_DOT,                   KC_TRNS , KC_TRNS,
                                       KC_TRNS,    KC_TRNS,  KC_TRNS,                    KC_TRNS  , KC_TRNS, KC_TRNS
     ),
     [_MAC_BASE] = LAYOUT(
@@ -109,10 +110,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       KC_TRNS,    KC_TRNS,  KC_TRNS,                    KC_TRNS  , KC_TRNS, KC_TRNS
     ),
     [_CONFIG] = LAYOUT(
-        XXX      , XXX    , XXX    , XXX    , XXX         , QK_BOOT,                    XXX     , XXX         , XXX     , XXX            , XXX             , XXX,
-        XXX      , XXX    , XXX    , XXX    , XXX         , XXX    ,                    KC_MPLY , KC_MPRV     , KC_VOLD , KC_VOLU        , KC_MNXT         , XXX,
-        XXX      , XXX    , XXX    , XXX    , XXX         , XXX    ,                    XXX     , XXX         , XXX     , XXX            , XXX             , XXX ,
-                                                       KC_TRNS, XXX,                    DF(_BASE), DF(_MAC_BASE),
+        RGB_TOG  , RGB_M_B, RGB_M_R, RGB_M_K, RGB_M_X     , QK_BOOT,                    XXX     , XXX         , XXX     , XXX            , XXX             , XXX,
+        RGB_M_P  , XXX    , RGB_MOD, RGB_RMOD,      XXX   ,     XXX,                    KC_MPLY , KC_MPRV     , KC_VOLD , KC_VOLU        , KC_MNXT         , XXX,
+        RGB_M_G  , XXX    , XXX    , XXX    , XXX         , XXX    ,                    XXX     , XXX         , XXX     , XXX            , XXX             , XXX ,
+                                                       KC_TRNS, XXX,                    TG(_MAC_BASE), DF(_BASE),
                                                       XXX, XXX, XXX,                    XXX, XXX, XXX
     ),
 };
@@ -126,15 +127,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // //   //debug_mouse=true;
 // }
 
+
+// home row mods
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+  if (!process_achordion(keycode, record)) { return false; }
+  // Your macros ...
+
+  return true;
+}
+
+
 // RGB
+// Stuff happening on layer state change
 layer_state_t layer_state_set_user(layer_state_t state) {
-    switch (get_highest_layer(state)) {
+    switch(biton32(state)) {
         case _MAC_BASE:
-            rgblight_disable();
+            rgblight_setrgb(RGB_BLUE);
             break;
-        default: // for any other layers, or the default layer
+        default:
             rgblight_setrgb(RGB_WHITE);
             break;
-    }
-  return state;
-}
+    };
+    return state;
+};
+
+// layer_state_t default_layer_state_set_user(layer_state_t state) {
+//     switch(biton32(state)) {
+//         case _MAC_BASE:
+//             rgblight_setrgb(RGB_BLUE);
+//             break;
+//         default:
+//             rgblight_setrgb(RGB_WHITE);
+//             break;
+//     };
+//     return state;
+// }
