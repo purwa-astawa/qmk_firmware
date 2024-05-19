@@ -24,5 +24,5 @@
     { R10, R11, R12, R13, R14, R15 }, \
     { R20, R21, R22, R23, R24, R25 }, \
     { XXX, XXX, R32, R33, XXX, XXX }, \
-    { R40, R41, R42, R43, XXX, XXX }\
+    { R40, R41, R42, XXX, XXX, XXX }\
 }
