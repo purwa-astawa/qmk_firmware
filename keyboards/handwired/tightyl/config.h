@@ -44,12 +44,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // WS2812 RGB LED strip input and number of LEDs
 #define DIODE_DIRECTION COL2ROW
 #define RGB_DI_PIN D3
-#define RGBLED_NUM 10
-#define RGBLED_SPLIT {5, 5}
+#define RGBLED_NUM 24
+#define RGBLED_SPLIT {12, 12}
 #define RGBLIGHT ANIMATIONS
+/* #define RGBLIGHT_LAYERS */
 
 #define USE_SERIAL
 #define SOFT_SERIAL_PIN D0
 #define MASTER_LEFT
 #define DEBOUNCE 5
 #define SPLIT_USB_DETECT
+
+// sleep issues

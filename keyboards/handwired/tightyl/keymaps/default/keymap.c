@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LALT  , HOME_A , HOME_S , HOME_D , HOME_F      , KC_G  ,                     KC_H     , HOME_J      , HOME_K  , HOME_L         , HOME_SCLN       , KC_QUOTE,
         KC_LSFT  , KC_Z   , KC_X   , KC_C   , KC_V        , KC_B  ,                     KC_N     , KC_M        , KC_COMM , KC_DOT         , KC_SLSH         , KC_BSLS ,
                                       LT(_CONFIG, KC_DEL),  KC_LGUI,                    KC_WH_D  , KC_WH_U,
-                  LT(_NAV, KC_GRV),    KC_SPC,  LT(_FUN, KC_TAB),                       LT(_SYM, KC_ESC), LSFT_T(KC_ENT), LT(_NUM, KC_BSPC)
+                  LT(_NAV, KC_GRV),    KC_SPC,  LT(_FUN, KC_TAB),                       LT(_SYM, KC_EQL), LSFT_T(KC_ENT), LT(_NUM, KC_BSPC)
     ),
     [_NAV] = LAYOUT(
         KC_TAB   ,     XXX,     XXX,     XXX,          XXX,     XXX,                    KC_HOME  , KC_PGUP     , KC_PGDN , KC_END         , XXX             , KC_EQL,
@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LALT  , MAC_HOME_A , HOME_S , MAC_HOME_D , HOME_F, KC_G,                     KC_H     , HOME_J      , MAC_HOME_K, HOME_L       , MAC_HOME_SCLN   , KC_QUOTE,
         KC_LSFT  , KC_Z   , KC_X   , KC_C   , KC_V        , KC_B  ,                     KC_N     , KC_M        , KC_COMM , KC_DOT         , KC_SLSH         , KC_BSLS ,
                                       LT(_CONFIG, KC_DEL),  KC_LGUI,                    KC_WH_D  , KC_WH_U,
-                  LT(_MAC_NAV, KC_GRV),    KC_SPC,  LT(_MAC_FUN, KC_TAB),                     LT(_MAC_SYM, KC_ESC), LSFT_T(KC_ENT), LT(_MAC_NUM, KC_BSPC)
+                  LT(_MAC_NAV, KC_GRV),    KC_SPC,  LT(_MAC_FUN, KC_TAB),               LT(_MAC_SYM, KC_EQL), LSFT_T(KC_ENT), LT(_MAC_NUM, KC_BSPC)
     ),
     [_MAC_NAV] = LAYOUT(
         KC_TAB   ,     XXX,     XXX,     XXX,          XXX,     XXX,                    KC_HOME  , KC_PGUP     , KC_PGDN , KC_END         , XXX             , KC_EQL,
@@ -110,55 +110,128 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       KC_TRNS,    KC_TRNS,  KC_TRNS,                    KC_TRNS  , KC_TRNS, KC_TRNS
     ),
     [_CONFIG] = LAYOUT(
-        RGB_TOG  , RGB_M_B, RGB_M_R, RGB_M_K, RGB_M_X     , QK_BOOT,                    XXX     , XXX         , XXX     , XXX            , XXX             , XXX,
-        RGB_M_P  , XXX    , RGB_MOD, RGB_RMOD,      XXX   ,     XXX,                    KC_MPLY , KC_MPRV     , KC_VOLD , KC_VOLU        , KC_MNXT         , XXX,
-        RGB_M_G  , XXX    , XXX    , XXX    , XXX         , XXX    ,                    XXX     , XXX         , XXX     , XXX            , XXX             , XXX ,
+        RGB_TOG  , RGB_M_B, RGB_M_R, RGB_M_K, RGB_M_X     , QK_BOOT,                    QK_BOOT    , XXX         , XXX     , XXX            , XXX             , RGB_TOG,
+        RGB_M_P  , XXX    , RGB_MOD, RGB_RMOD,      XXX   ,  EE_CLR,                    EE_CLR     , KC_MPRV     , KC_VOLD , KC_VOLU        , KC_MNXT         , RGB_M_P,
+        RGB_M_G  , XXX    , XXX    , XXX    , XXX         ,  QK_RBT,                    QK_RBT     , XXX         , XXX     , XXX            , XXX             , RGB_M_G ,
                                                        KC_TRNS, XXX,                    TG(_MAC_BASE), DF(_BASE),
                                                       XXX, XXX, XXX,                    XXX, XXX, XXX
     ),
 };
 
 
+//
+// RGB layers
+//
+// const rgblight_segment_t PROGMEM base_rgb_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+//     {0, 10, HSV_WHITE}       // Light 4 LEDs, starting with LED 6
+// );
+//
+// const rgblight_segment_t PROGMEM mac_rgb_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+//     {0, 10, HSV_BLUE}       // Light 4 LEDs, starting with LED 6
+// );
+//
+//
+// const rgblight_segment_t PROGMEM nav_rgb_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+//     {0, 10, HSV_GREEN}       // Light 4 LEDs, starting with LED 6
+// );
+//
+// const rgblight_segment_t PROGMEM sym_rgb_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+//     {0, 10, HSV_PURPLE}       // Light 4 LEDs, starting with LED 6
+// );
+//
+// const rgblight_segment_t PROGMEM num_rgb_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+//     {0, 10, HSV_ORANGE}       // Light 4 LEDs, starting with LED 6
+// );
+//
+// const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+//     base_rgb_layer,
+//     mac_rgb_layer,    // Overrides caps lock layer
+//     nav_rgb_layer,    // Overrides other layers
+//     sym_rgb_layer,     // Overrides other layers
+//     num_rgb_layer     // Overrides other layers
+// );
+
 // void keyboard_post_init_user(void) {
-// //   // Customise these values to desired behaviour
-//   debug_enable=true;
-//   debug_matrix=true;
-//   debug_keyboard=true;
-// //   //debug_mouse=true;
+  // debug
+  // Customise these values to desired behaviour
+  // debug_enable=true;
+  // debug_matrix=true;
+  // debug_keyboard=true;
+  //debug_mouse=true;
+
+ // rgblight_layers = my_rgb_layers;
 // }
 
+void matrix_scan_user(void) {
+  achordion_task();
+}
 
 // home row mods
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   if (!process_achordion(keycode, record)) { return false; }
   // Your macros ...
 
+  // if (record->event.pressed) {
+    // On every key press, print the event's keycode and matrix position.
+  //   dprintf("kc=0x%04X, row=%2u, col=%2u\n",
+  //       keycode, record->event.key.row, record->event.key.col);
+  // }
+
   return true;
+}
+
+bool achordion_chord(uint16_t tap_hold_keycode,
+                     keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode,
+                     keyrecord_t* other_record) {
+
+  // Also allow same-hand holds when the other key is in the rows below the
+  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+   if (other_keycode > KC_Z) {
+        return true;
+    }
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
 
 // RGB
 // Stuff happening on layer state change
+// layer_state_t default_layer_state_set_user(layer_state_t state) {
+//     rgblight_set_layer_state(0, layer_state_cmp(state, _BASE));
+//     return state;
+// }
+
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch(biton32(state)) {
         case _MAC_BASE:
-            rgblight_setrgb(RGB_BLUE);
+            rgblight_sethsv(HSV_BLUE);
+            break;
+        case _NUM:
+        case _MAC_NUM:
+            rgblight_sethsv(HSV_PURPLE);
+            break;
+        case _SYM:
+        case _MAC_SYM:
+            rgblight_sethsv(HSV_ORANGE);
+            break;
+        case _NAV:
+        case _MAC_NAV:
+            rgblight_sethsv(HSV_GREEN);
             break;
         default:
-            rgblight_setrgb(RGB_WHITE);
+            rgblight_sethsv(HSV_RED);
             break;
     };
+    // rgblight_set_layer_state(1, layer_state_cmp(state, _MAC_BASE));
+    // rgblight_set_layer_state(2, layer_state_cmp(state, _NAV));
+    // rgblight_set_layer_state(2, layer_state_cmp(state, _MAC_NAV));
+    // rgblight_set_layer_state(3, layer_state_cmp(state, _SYM));
+    // rgblight_set_layer_state(3, layer_state_cmp(state, _MAC_SYM));
+    //
+    // rgblight_set_layer_state(4, layer_state_cmp(state, _NUM));
+    // rgblight_set_layer_state(4, layer_state_cmp(state, _MAC_NUM));
+
     return state;
 };
 
-// layer_state_t default_layer_state_set_user(layer_state_t state) {
-//     switch(biton32(state)) {
-//         case _MAC_BASE:
-//             rgblight_setrgb(RGB_BLUE);
-//             break;
-//         default:
-//             rgblight_setrgb(RGB_WHITE);
-//             break;
-//     };
-//     return state;
-// }
