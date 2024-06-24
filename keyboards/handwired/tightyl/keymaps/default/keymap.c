@@ -38,6 +38,12 @@
 #define MAC_HOME_SCLN RCTL_T(KC_SCLN)
 
 
+
+// sym and num layer tap
+#define BASE_NUM LT(_NUM, KC_BSPC)
+#define MAC_BASE_NUM LT(_MAC_NUM, KC_BSPC)
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
         KC_ESC   , KC_Q   , KC_W   , KC_E   , KC_R        , KC_T  ,                     KC_Y     , KC_U        , KC_I    , KC_O           , KC_P            , KC_MINUS,
@@ -61,18 +67,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       KC_TRNS,    KC_TRNS,  KC_TRNS,                    KC_TRNS  , KC_TRNS, KC_TRNS
     ),
     [_NUM] = LAYOUT(
-        KC_PLUS  , KC_MINUS, KC_7   , KC_8   , KC_9        , KC_0   ,                   XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
+        KC_PLUS  , KC_MINUS, KC_7   , KC_8   , KC_9        , KC_0   ,                   KC_LEFT  , KC_DOWN     , KC_UP   , KC_RIGHT       , XXX             ,  KC_BSPC,
         KC_ASTR  , KC_SLSH , KC_4   , KC_5   , KC_6        , KC_LBRC,                   XXX      , KC_LSFT     , KC_LCTL , KC_LALT        , KC_LGUI         ,  XXX,
         KC_EQL   , KC_PERC , KC_1   , KC_2   , KC_3        , KC_RBRC,                   XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
                                                   KC_COMM  ,  KC_DOT,                   KC_TRNS  , KC_TRNS,
-                                      KC_TRNS,    KC_TRNS,  KC_TRNS,                    KC_TRNS  , KC_TRNS, KC_TRNS
+                                      KC_PIPE,    KC_TRNS,  KC_AMPR,                    KC_TRNS  , KC_TRNS, KC_TRNS
     ),
+
     [_SYM] = LAYOUT(
-        KC_GRV   , KC_EXLM , KC_AT  , KC_HASH, KC_DLR      , KC_CIRC,                   XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
-        KC_TILD  , KC_AMPR , KC_LCBR, KC_RCBR, KC_LPRN     , KC_RPRN,                   XXX      , KC_LSFT     , KC_LCTL , KC_LALT        , KC_LGUI         ,  XXX,
-        KC_EQL   , KC_PIPE , KC_LBRC, KC_RBRC, KC_LT       ,   KC_GT,                   XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
-                                                  KC_COMM   ,  KC_DOT,                   KC_TRNS , KC_TRNS,
-                                      KC_TRNS,    KC_TRNS,  KC_TRNS,                    KC_TRNS  , KC_TRNS, KC_TRNS
+        KC_GRV   , KC_EXLM , KC_QUES, KC_SLSH, KC_HASH      , KC_CIRC,                  KC_LEFT  , KC_DOWN     , KC_UP   , KC_RIGHT       , XXX             ,  KC_BSPC,
+        KC_PERC  , KC_LPRN , KC_EQL , KC_GT  , KC_LCBR      , KC_AT,                    XXX      , KC_LSFT     , KC_LCTL , KC_LALT        , KC_LGUI         ,  XXX,
+        KC_DLR   , KC_RPRN , KC_MINUS, KC_LT, KC_RCBR       , KC_ASTR,                  XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
+                                                  KC_COMM   ,  KC_DOT,                  KC_TRNS , KC_TRNS,
+                                      KC_PIPE,    KC_TRNS,  KC_AMPR,                    KC_TRNS  , KC_TRNS, KC_TRNS
     ),
     [_MAC_BASE] = LAYOUT(
         KC_ESC   , KC_Q   , KC_W   , KC_E   , KC_R        , KC_T  ,                     KC_Y     , KC_U        , KC_I    , KC_O           , KC_P            , KC_MINUS,
@@ -86,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXX      , KC_LCTL, KC_LALT,  KC_LGUI,      KC_LSFT,    XXX,                    KC_LEFT  , KC_DOWN     , KC_UP   , KC_RIGHT       , XXX             , KC_UNDS,
         XXX      ,     XXX,     XXX,     XXX,           XXX,    XXX,                    XXX      , XXX         , XXX     , XXX            , XXX             , KC_PIPE,
                                                   KC_TRNS,  KC_TRNS,                    KC_BSPC  , KC_DEL,
-                                      KC_TRNS,    KC_TRNS,  KC_TRNS,                    KC_TRNS  , KC_TRNS, KC_TRNS
+                                     KC_TRNS,    KC_TRNS,  KC_TRNS,                     KC_TRNS  , KC_TRNS, KC_TRNS
     ),
     [_MAC_FUN] = LAYOUT(
         KC_TAB   , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS     , KC_TRNS,                    KC_F1    , KC_F2       , KC_F3   , KC_F4          , KC_F5           , KC_F6,
@@ -96,23 +103,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       KC_TRNS,    KC_TRNS,  KC_TRNS,                    KC_TRNS  , KC_TRNS, KC_TRNS
     ),
     [_MAC_NUM] = LAYOUT(
-        KC_PLUS  , KC_MINUS, KC_7   , KC_8   , KC_9        , KC_0   ,                   XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
+        KC_PLUS  , KC_MINUS, KC_7   , KC_8   , KC_9        , KC_0   ,                   KC_LEFT  , KC_DOWN     , KC_UP   , KC_RIGHT       , XXX             ,  KC_BSPC,
         KC_ASTR  , KC_SLSH , KC_4   , KC_5   , KC_6        , KC_LBRC,                   XXX      , KC_LSFT     , KC_LGUI , KC_LALT        , KC_LCTL         ,  XXX,
         KC_EQL   , KC_PERC , KC_1   , KC_2   , KC_3        , KC_RBRC,                   XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
                                                   KC_COMM  ,  KC_DOT,                   KC_TRNS  , KC_TRNS,
-                                      KC_TRNS,    KC_TRNS,  KC_TRNS,                    KC_TRNS  , KC_TRNS, KC_TRNS
+                                      KC_PIPE,    KC_TRNS,  KC_AMPR,                    KC_TRNS  , KC_TRNS, KC_TRNS
     ),
     [_MAC_SYM] = LAYOUT(
-        KC_GRV   , KC_EXLM , KC_AT  , KC_HASH, KC_DLR      , KC_CIRC,                   XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
-        KC_TILD  , KC_AMPR , KC_LCBR, KC_RCBR, KC_LPRN     , KC_RPRN,                   XXX      , KC_LSFT     , KC_LGUI , KC_LALT        , KC_LCTL         ,  XXX,
-        KC_EQL   , KC_PIPE , KC_LBRC, KC_RBRC, KC_LT       ,   KC_GT,                   XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
+        KC_GRV   , KC_EXLM , KC_QUES, KC_SLSH, KC_HASH      , KC_CIRC,                  KC_LEFT  , KC_DOWN     , KC_UP   , KC_RIGHT       , XXX             ,  KC_BSPC,
+        KC_PERC  , KC_LPRN , KC_EQL , KC_GT  , KC_LCBR      , KC_AT,                    XXX      , KC_LSFT     , KC_LGUI , KC_LALT        , KC_LCTL         ,  XXX,
+        KC_DLR   , KC_RPRN , KC_MINUS, KC_LT, KC_RCBR       , KC_ASTR,                   XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
                                                   KC_COMM   ,  KC_DOT,                   KC_TRNS  , KC_TRNS,
-                                      KC_TRNS,    KC_TRNS,  KC_TRNS,                    KC_TRNS  , KC_TRNS, KC_TRNS
+                                      KC_PIPE,    KC_TRNS,  KC_AMPR,                    KC_TRNS  , KC_TRNS, KC_TRNS
     ),
     [_CONFIG] = LAYOUT(
-        QK_BOOT , RGB_M_B, RGB_M_R, RGB_M_K, RGB_M_X     ,  RGB_TOG,                    RGB_TOG    ,  RGB_M_B    , RGB_M_R , RGB_M_K        , RGB_M_X         , RGB_TOG,
-        EE_CLR  , XXX    , RGB_MOD, RGB_RMOD,      XXX   ,  RGB_MOD,                    RGB_MOD    , KC_MPRV     , KC_VOLD , KC_VOLU        , KC_MNXT         , RGB_M_P,
-        QK_RBT  , XXX    , XXX    , XXX    , XXX         ,  RGB_RMOD,                   RGB_RMOD   , XXX         , XXX     , XXX            , XXX             , RGB_M_G ,
+        QK_BOOT , RGB_M_B, RGB_M_R, RGB_M_K, RGB_M_X     ,  QK_BOOT,                    RGB_TOG    ,  RGB_M_B    , RGB_M_R , RGB_M_K        , RGB_M_X         , RGB_TOG,
+        EE_CLR  , XXX    , RGB_MOD, RGB_RMOD,      XXX   ,  EE_CLR,                     RGB_MOD    , KC_MPRV     , KC_VOLD , KC_VOLU        , KC_MNXT         , RGB_M_P,
+        QK_RBT  , XXX    , XXX    , XXX    , XXX         ,  QK_RBT,                     RGB_RMOD   , XXX         , XXX     , XXX            , XXX             , RGB_M_G ,
                                                        KC_TRNS, XXX,                    TG(_MAC_BASE), DF(_BASE),
                                                       XXX, XXX, XXX,                    XXX, XXX, XXX
     ),
@@ -178,6 +185,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   // }
 
   return true;
+}
+
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
+  // If you quickly hold a tap-hold key after tapping it, the tap action is
+  // repeated. Key repeating is useful e.g. for Vim navigation keys, but can
+  // lead to missed triggers in fast typing. Here, returning 0 means we
+  // instead want to "force hold" and disable key repeating.
+  switch (keycode) {
+    case HOME_J:
+    case HOME_K:
+    case HOME_L:
+    case MAC_HOME_K:
+      return QUICK_TAP_TERM;  // Enable key repeating.
+    default:
+      return 0;  // Otherwise, force hold and disable key repeating.
+  }
 }
 
 bool achordion_chord(uint16_t tap_hold_keycode,
