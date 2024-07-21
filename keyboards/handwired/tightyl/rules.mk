@@ -20,3 +20,9 @@ SPLIT_KEYBOARD = yes
 CAPS_WORD_ENABLE = no
 #AUTO_SHIFT_ENABLE = yes
 SRC += features/achordion.c
+
+# https://docs.qmk.fm/#/custom_quantum_functions?id=deferred-execution
+DEFERRED_EXEC_ENABLE = yes
+
+# https://github.com/qmk/qmk_firmware/issues/19593#issuecomment-1387476045
+# NO_USB_STARTUP_CHECK = yes

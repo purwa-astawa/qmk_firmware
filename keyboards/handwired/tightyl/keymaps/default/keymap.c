@@ -49,8 +49,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC   , KC_Q   , KC_W   , KC_E   , KC_R        , KC_T  ,                     KC_Y     , KC_U        , KC_I    , KC_O           , KC_P            , KC_MINUS,
         KC_LALT  , KC_A , HOME_S , HOME_D , HOME_F      , KC_G  ,                       KC_H     , HOME_J      , HOME_K  , HOME_L         , KC_SCLN       , KC_QUOTE,
         KC_LSFT  , KC_Z   , KC_X   , KC_C   , KC_V        , KC_B  ,                     KC_N     , KC_M        , KC_COMM , KC_DOT         , KC_SLSH         , KC_BSLS ,
-                                      LT(_CONFIG, KC_DEL),  KC_LGUI,                    KC_WH_D  , KC_WH_U,
-                  LT(_NAV, KC_GRV),    KC_SPC,  LT(_FUN, KC_TAB),                       LT(_SYM, KC_ENT), KC_LSFT, LT(_NUM, KC_BSPC)
+                                      LT(_CONFIG, KC_DEL),  KC_LGUI,                    KC_LCBR  , KC_RCBR,
+                  LT(_NAV, KC_GRV),    KC_SPC,  LT(_FUN, KC_TAB),                       LT(_SYM, KC_ESC), RSFT_T(KC_ENT), LT(_NUM, KC_BSPC)
     ),
     [_NAV] = LAYOUT(
         KC_TAB   ,     XXX,     XXX,     XXX,          XXX,     XXX,                    KC_HOME  , KC_PGUP     , KC_PGDN , KC_END         , XXX             , KC_EQL,
@@ -85,8 +85,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC   , KC_Q   , KC_W   , KC_E   , KC_R        , KC_T  ,                     KC_Y     , KC_U        , KC_I    , KC_O           , KC_P            , KC_MINUS,
         KC_LALT  , MAC_HOME_A , HOME_S , MAC_HOME_D , HOME_F, KC_G,                     KC_H     , HOME_J      , MAC_HOME_K, HOME_L       , MAC_HOME_SCLN   , KC_QUOTE,
         KC_LSFT  , KC_Z   , KC_X   , KC_C   , KC_V        , KC_B  ,                     KC_N     , KC_M        , KC_COMM , KC_DOT         , KC_SLSH         , KC_BSLS ,
-                                      LT(_CONFIG, KC_DEL),  KC_LGUI,                    KC_WH_D  , KC_WH_U,
-                  LT(_MAC_NAV, KC_GRV),    KC_SPC,  LT(_MAC_FUN, KC_TAB),               LT(_MAC_SYM, KC_ENT), KC_LSFT, LT(_MAC_NUM, KC_BSPC)
+                                      LT(_CONFIG, KC_DEL),  KC_LGUI,                    KC_LCBR  , KC_RCBR,
+                  LT(_MAC_NAV, KC_GRV),    KC_SPC,  LT(_MAC_FUN, KC_TAB),               LT(_SYM, KC_ESC), RSFT_T(KC_ENT), LT(_MAC_NUM, KC_BSPC)
     ),
     [_MAC_NAV] = LAYOUT(
         KC_TAB   ,     XXX,     XXX,     XXX,          XXX,     XXX,                    KC_HOME  , KC_PGUP     , KC_PGDN , KC_END         , XXX             , KC_EQL,
@@ -217,6 +217,10 @@ bool achordion_chord(uint16_t tap_hold_keycode,
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
+uint16_t achordion_streak_chord_timeout(
+    uint16_t tap_hold_keycode, uint16_t next_keycode) {
+  return 200;  // Default of 100 ms.
+}
 
 // RGB
 // Stuff happening on layer state change
