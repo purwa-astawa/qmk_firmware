@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LALT  , KC_A , HOME_S , HOME_D , HOME_F      , KC_G  ,                       KC_H     , HOME_J      , HOME_K  , HOME_L         , KC_SCLN       , KC_QUOTE,
         KC_LSFT  , KC_Z   , KC_X   , KC_C   , KC_V        , KC_B  ,                     KC_N     , KC_M        , KC_COMM , KC_DOT         , KC_SLSH         , KC_BSLS ,
                                       LT(_CONFIG, KC_DEL),  KC_LGUI,                    KC_LCBR  , KC_RCBR,
-                  LT(_NAV, KC_GRV),    KC_SPC,  LT(_FUN, KC_TAB),                       LT(_SYM, KC_ESC), RSFT_T(KC_ENT), LT(_NUM, KC_BSPC)
+                  LT(_NAV, KC_GRV),    KC_SPC,  LT(_FUN, KC_TAB),                       LT(_SYM, KC_ENT), KC_LSFT, LT(_NUM, KC_BSPC)
     ),
     [_NAV] = LAYOUT(
         KC_TAB   ,     XXX,     XXX,     XXX,          XXX,     XXX,                    KC_HOME  , KC_PGUP     , KC_PGDN , KC_END         , XXX             , KC_EQL,
@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       KC_TRNS,    KC_TRNS,  KC_TRNS,                    KC_TRNS  , KC_TRNS, KC_TRNS
     ),
     [_NUM] = LAYOUT(
-        KC_PLUS  , KC_MINUS, KC_7   , KC_8   , KC_9        , KC_0   ,                   KC_LEFT  , KC_DOWN     , KC_UP   , KC_RIGHT       , XXX             ,  KC_BSPC,
+        KC_PLUS  , KC_MINUS, KC_7   , KC_8   , KC_9        , KC_0   ,                   KC_LEFT  , KC_DOWN     , KC_UP   , KC_RIGHT       , XXX             ,  KC_EQL,
         KC_ASTR  , KC_SLSH , KC_4   , KC_5   , KC_6        , KC_LBRC,                   XXX      , KC_LSFT     , KC_LCTL , KC_LALT        , KC_LGUI         ,  XXX,
         KC_EQL   , KC_PERC , KC_1   , KC_2   , KC_3        , KC_RBRC,                   XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
                                                   KC_COMM  ,  KC_DOT,                   KC_TRNS  , KC_TRNS,
@@ -75,9 +75,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_SYM] = LAYOUT(
-        KC_GRV   , KC_EXLM , KC_QUES, KC_SLSH, KC_HASH      , KC_CIRC,                  KC_LEFT  , KC_DOWN     , KC_UP   , KC_RIGHT       , XXX             ,  KC_BSPC,
-        KC_PERC  , KC_LPRN , KC_EQL , KC_GT  , KC_LCBR      , KC_AT,                    XXX      , KC_LSFT     , KC_LCTL , KC_LALT        , KC_LGUI         ,  XXX,
-        KC_DLR   , KC_RPRN , KC_MINUS, KC_LT, KC_RCBR       , KC_ASTR,                  XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
+        KC_GRV   , KC_EXLM , KC_QUES, KC_SLSH, KC_HASH      , KC_CIRC,                  KC_LEFT  , KC_DOWN     , KC_UP   , KC_RIGHT       , XXX             ,  KC_EQL,
+        KC_PERC  , KC_LPRN , KC_EQL , KC_GT  , KC_LCBR      , KC_LBRC,                    XXX      , KC_LSFT     , KC_LCTL , KC_LALT        , KC_LGUI         ,  XXX,
+        KC_DLR   , KC_RPRN , KC_MINUS, KC_LT, KC_RCBR       , KC_RBRC,                  XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
                                                   KC_COMM   ,  KC_DOT,                  KC_TRNS , KC_TRNS,
                                       KC_PIPE,    KC_TRNS,  KC_AMPR,                    KC_TRNS  , KC_TRNS, KC_TRNS
     ),
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LALT  , MAC_HOME_A , HOME_S , MAC_HOME_D , HOME_F, KC_G,                     KC_H     , HOME_J      , MAC_HOME_K, HOME_L       , MAC_HOME_SCLN   , KC_QUOTE,
         KC_LSFT  , KC_Z   , KC_X   , KC_C   , KC_V        , KC_B  ,                     KC_N     , KC_M        , KC_COMM , KC_DOT         , KC_SLSH         , KC_BSLS ,
                                       LT(_CONFIG, KC_DEL),  KC_LGUI,                    KC_LCBR  , KC_RCBR,
-                  LT(_MAC_NAV, KC_GRV),    KC_SPC,  LT(_MAC_FUN, KC_TAB),               LT(_SYM, KC_ESC), RSFT_T(KC_ENT), LT(_MAC_NUM, KC_BSPC)
+                  LT(_MAC_NAV, KC_GRV),    KC_SPC,  LT(_MAC_FUN, KC_TAB),               LT(_MAC_SYM, KC_ENT), KC_LSFT, LT(_MAC_NUM, KC_BSPC)
     ),
     [_MAC_NAV] = LAYOUT(
         KC_TAB   ,     XXX,     XXX,     XXX,          XXX,     XXX,                    KC_HOME  , KC_PGUP     , KC_PGDN , KC_END         , XXX             , KC_EQL,
@@ -103,14 +103,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       KC_TRNS,    KC_TRNS,  KC_TRNS,                    KC_TRNS  , KC_TRNS, KC_TRNS
     ),
     [_MAC_NUM] = LAYOUT(
-        KC_PLUS  , KC_MINUS, KC_7   , KC_8   , KC_9        , KC_0   ,                   KC_LEFT  , KC_DOWN     , KC_UP   , KC_RIGHT       , XXX             ,  KC_BSPC,
+        KC_PLUS  , KC_MINUS, KC_7   , KC_8   , KC_9        , KC_0   ,                   KC_LEFT  , KC_DOWN     , KC_UP   , KC_RIGHT       , XXX             ,  KC_EQL,
         KC_ASTR  , KC_SLSH , KC_4   , KC_5   , KC_6        , KC_LBRC,                   XXX      , KC_LSFT     , KC_LGUI , KC_LALT        , KC_LCTL         ,  XXX,
         KC_EQL   , KC_PERC , KC_1   , KC_2   , KC_3        , KC_RBRC,                   XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
                                                   KC_COMM  ,  KC_DOT,                   KC_TRNS  , KC_TRNS,
                                       KC_PIPE,    KC_TRNS,  KC_AMPR,                    KC_TRNS  , KC_TRNS, KC_TRNS
     ),
     [_MAC_SYM] = LAYOUT(
-        KC_GRV   , KC_EXLM , KC_QUES, KC_SLSH, KC_HASH      , KC_CIRC,                  KC_LEFT  , KC_DOWN     , KC_UP   , KC_RIGHT       , XXX             ,  KC_BSPC,
+        KC_GRV   , KC_EXLM , KC_QUES, KC_SLSH, KC_HASH      , KC_CIRC,                  KC_LEFT  , KC_DOWN     , KC_UP   , KC_RIGHT       , XXX             ,  KC_EQL,
         KC_PERC  , KC_LPRN , KC_EQL , KC_GT  , KC_LCBR      , KC_AT,                    XXX      , KC_LSFT     , KC_LGUI , KC_LALT        , KC_LCTL         ,  XXX,
         KC_DLR   , KC_RPRN , KC_MINUS, KC_LT, KC_RCBR       , KC_ASTR,                   XXX      , XXX         , XXX     , XXX            , XXX             ,  XXX,
                                                   KC_COMM   ,  KC_DOT,                   KC_TRNS  , KC_TRNS,
